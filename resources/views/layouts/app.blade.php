@@ -23,8 +23,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" >
-                    <div style="border-right: 2px solid black; padding-right: 10px"><img src="svg/instagram-clone-project-logo.svg" alt="logo" style="height: 20px;"></div>
+                <a class="navbar-brand d-flex" style="padding-left: 100px" href="{{ url('/') }}" >
+                    <div style="border-right: 2px solid black; padding-right: 10px"><img src="/svg/instagram-clone-project-logo.svg" alt="logo" style="height: 20px;"></div>
                     <div style="padding-left: 10px">{{ config('app.name') }}</div>
 {{--                        {{ config('app.name') }}--}}
                 </a>
@@ -59,8 +59,8 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <a id="navbarDropdown" style="padding-right: 100px" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->username }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
