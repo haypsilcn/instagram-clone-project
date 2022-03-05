@@ -31,9 +31,14 @@
                     <div>
                         <h1>{{ $user->username }}</h1>
                     </div>
-                    <div class="ps-4">
-                        <button class="btn btn-primary">Follow</button>
-                    </div>
+
+                    @guest
+                        <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                    @else
+                        @if(Auth::user()->id != $user->id)
+                            <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                        @endif
+                    @endguest
 
                 </div>
 
@@ -49,9 +54,9 @@
             @endcan
 
             <div class="d-flex pt-2">
-                <div style="padding-right: 70px"><b> {{ $user->posts->count() }} </b> posts</div>
-                <div style="padding-right: 70px"><b>72</b> followers</div>
-                <div style="padding-right: 70px"><b>47</b> following</div>
+                <div style="padding-right: 70px"><b>{{ $user->posts->count() }}</b> posts</div>
+                <div style="padding-right: 70px"><b>{{ $user->profile->followers->count() }}</b> followers</div>
+                <div style="padding-right: 70px"><b>{{ $user->following->count() }}</b> following</div>
             </div>
             <div class="pt-4"><b>{{ $user->profile->title ?? ''}}</b></div>
             <div>{{ $user->profile->description ?? '' }}</div>
