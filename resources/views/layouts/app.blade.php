@@ -58,6 +58,11 @@
                                 </li>
                             @endif
                         @else
+                            <li>
+                                <a href="/profile/{{ Auth::user()->id }}">
+                                    <img src="{{ Auth::user()->profile->profileImage() }}" alt="avatar" style="max-height: 45px" class="rounded-circle">
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" style="padding-right: 100px" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }}
