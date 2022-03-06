@@ -18,14 +18,11 @@ class PostsController extends Controller
         // get all followers
         $users = auth()->user()->following()->pluck('profiles.user_id');
 
-        // get all posts by followers
-        $postsByFollowers= Post::whereIn('user_id',$users)->get();
+        // merge all followers with login user
+        $data = $users->merge(auth()->user()->id);
 
-        // get all posts of login user
-        $postsByUser = Post::where('user_id', auth()->user()->id)->get();
-
-        // merge all posts together
-        $posts= $postsByUser->merge($postsByFollowers)->sortByDesc('created_at');
+        // get 5 latest post from user and its followers
+        $posts = Post::whereIn('user_id', $data)->latest()->paginate(5);
 
         return view(('posts/index'), compact('posts'));
     }
