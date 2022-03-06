@@ -42,21 +42,20 @@
 
                 </div>
 
-
-<!--                @can('update', $user->profile)
-                    <a href="/post/create">Add New Post</a>
-                @endcan-->
+                {{--               @can('update', $user->profile)
+                                   <a href="/post/create">Add New Post</a>
+                               @endcan--}}
 
             </div>
 
             {{--@can('update', $user->profile)
                 <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
-            @endcan--}}
+                           @endcan--}}
 
             <div class="d-flex pt-2">
-                <div style="padding-right: 70px"><b>{{ $user->posts->count() }}</b> posts</div>
-                <div style="padding-right: 70px"><b>{{ $user->profile->followers->count() }}</b> followers</div>
-                <div style="padding-right: 70px"><b>{{ $user->following->count() }}</b> following</div>
+                <div style="padding-right: 70px"><b>{{ $postCount }}</b> posts</div>
+                <div style="padding-right: 70px"><b>{{ $followersCount }}</b> followers</div>
+                <div style="padding-right: 70px"><b>{{ $followingCount }}</b> following</div>
             </div>
             <div class="pt-4"><b>{{ $user->profile->title ?? ''}}</b></div>
             <div>{{ $user->profile->description ?? '' }}</div>

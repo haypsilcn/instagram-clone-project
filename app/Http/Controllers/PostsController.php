@@ -22,7 +22,7 @@ class PostsController extends Controller
         $data = $users->merge(auth()->user()->id);
 
         // get 5 latest post from user and its followers
-        $posts = Post::whereIn('user_id', $data)->latest()->paginate(5);
+        $posts = Post::whereIn('user_id', $data)->with('user')->latest()->paginate(5);
 
         return view(('posts/index'), compact('posts'));
     }
