@@ -43,7 +43,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-center">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -58,6 +58,11 @@
                                 </li>
                             @endif
                         @else
+                            <li style="padding-right: 10px">
+                                <a href="/post/create">
+                                    <img src="/svg/new-post.svg" alt="Add New Post" style="height: 30px">
+                                </a>
+                            </li>
                             <li>
                                 <a href="/profile/{{ Auth::user()->id }}">
                                     <img src="{{ Auth::user()->profile->profileImage() }}" alt="avatar" style="max-height: 45px" class="rounded-circle">
@@ -69,6 +74,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/edit">Edit Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

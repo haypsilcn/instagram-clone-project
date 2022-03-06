@@ -17,8 +17,16 @@
                     <a href="/profile/{{ $post->user->id }}" style="color: black; text-decoration: none">
                         <h4><b>{{ $post->user->username }}</b></h4>
                     </a>
-                    <p class="ps-3">&#9679</p>
-                    <a href="#" class="ps-3"><h5>Follow</h5></a>
+
+                    @guest
+                        <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                    @else
+                        @if(Auth::user()->id != $post->user->id)
+                            <p class="ps-3">&#9679</p>
+                            <follow-button user-id="{{ $post->user->id }}" follows="{{ Auth::user()->following->contains($post->user->id) }}"></follow-button>
+                        @endif
+                    @endguest
+
                 </div>
             </div>
 
@@ -27,7 +35,7 @@
             <div class="d-flex align-items-center">
                 <div style="padding-right: 10px">
                     <a href="/profile/{{ $post->user->id }}">
-                        <img src="/storage/{{ $post->user->profile->image }}" alt="avatar" style="max-height: 40px" class="rounded-circle">
+                        <img src="{{ $post->user->profile->profileImage() }}" alt="avatar" style="max-height: 40px" class="rounded-circle">
                     </a>
                 </div>
                 <div style="padding-right: 10px">

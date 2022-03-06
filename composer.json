@@ -10,6 +10,7 @@
         "intervention/image": "dev-master",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
+        "laravel/telescope": "^4.7",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4"
     },

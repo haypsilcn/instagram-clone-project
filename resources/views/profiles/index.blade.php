@@ -43,15 +43,15 @@
                 </div>
 
 
-                @can('update', $user->profile)
+<!--                @can('update', $user->profile)
                     <a href="/post/create">Add New Post</a>
-                @endcan
+                @endcan-->
 
             </div>
 
-            @can('update', $user->profile)
+            {{--@can('update', $user->profile)
                 <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
-            @endcan
+            @endcan--}}
 
             <div class="d-flex pt-2">
                 <div style="padding-right: 70px"><b>{{ $user->posts->count() }}</b> posts</div>
